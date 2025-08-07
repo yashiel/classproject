@@ -1,23 +1,24 @@
+/*
+ * Copyright (c)  2025. All rights reserved.
+ *
+ * Author : Yashi EL
+ * github : github.com/yashiel
+ *
+ * This source code is licensed under the MIT, Apache 2.0 license
+ * found in the LICENSE file in the root directory of this source tree
+ */
+
 import './App.css'
 import Home from './pages/Home'
-import Artists from './pages/Artists'
-import Events from './pages/Events'
-import Products from './pages/Products'
-import { Routes, Route } from 'react-router'
 
 
-function App() {
+const App = () => {
 
-  return (
-    <>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/artists' element={<Artists />} />
-        <Route path='/events' element={<Events />} />
-        <Route path='/products' element={<Products />} />
-      </Routes>
-    </>
-  )
-}
+    return (
+        <>
+            <Home/>
+        </>
+    )
+};
 
-export default App
+export default App;
