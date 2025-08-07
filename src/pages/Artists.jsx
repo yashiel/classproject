@@ -1,12 +1,18 @@
 /*
- * Copyright (c)  2025. All rights reserved.
- *
- * Author : Yashi EL
- * github : github.com/yashiel
- *
- * This source code is licensed under the MIT, Apache 2.0 license
- * found in the LICENSE file in the root directory of this source tree
+ * File: /Users/yashi/Desktop/classproject/src/pages/Artists.jsx
+ * Project: /Users/yashi/Desktop/classproject
+ * Created Date: Friday August 8th 2025
+ * Author: Yashi EL
+ * -----
+ * Last Modified: Friday August 8th 2025 4:50:35 am
+ * Modified By: the developer formerly known as Yashi EL at <hi@yashiel.com>
+ * -----
+ * Copyright (c) 2025 Yashi Digital Agency
+ * -----
+ * HISTORY:
  */
+
+
 
 import React from 'react';
 import ListItem from '../components/ListItem';
@@ -17,6 +23,8 @@ const artists = [
 	{name: 'Artist 2', description: 'Description 2', image: 'https://via.placeholder.com/150'},
 	{name: 'Artist 3', description: 'Description 3', image: 'https://via.placeholder.com/150'},
 ];
+
+
 
 
 const Artists = () => {

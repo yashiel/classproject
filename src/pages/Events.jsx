@@ -1,14 +1,18 @@
 /*
- * Copyright (c)  2025. All rights reserved.
- *
- * Author : Yashi EL
- * github : github.com/yashiel
- *
- * This source code is licensed under the MIT, Apache 2.0 license
- * found in the LICENSE file in the root directory of this source tree
+ * File: /Users/yashi/Desktop/classproject/src/pages/Events.jsx
+ * Project: /Users/yashi/Desktop/classproject
+ * Created Date: Wednesday August 6th 2025
+ * Author: Yashi EL
+ * -----
+ * Last Modified: Wednesday August 6th 2025 8:01:44 am
+ * Modified By: the developer formerly known as Yashi EL at <hi@yashiel.com>
+ * -----
+ * Copyright (c) 2025 Yashi Digital Agency
+ * -----
+ * HISTORY:
  */
 
-import React from 'react';
+
 
 const Events = () => {
     return (
