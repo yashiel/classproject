@@ -16,12 +16,12 @@
 
 import React from 'react';
 import ListItem from '../components/ListItem';
-
+import Navigation from '../components/Navigation';
 
 const artists = [
-	{name: 'Artist 1', description: 'Description 1', image: 'https://via.placeholder.com/150'},
-	{name: 'Artist 2', description: 'Description 2', image: 'https://via.placeholder.com/150'},
-	{name: 'Artist 3', description: 'Description 3', image: 'https://via.placeholder.com/150'},
+	{name: 'Artist 1', description: 'Description 1', image: 'https://picsum.photos/200?random=6'},
+	{name: 'Artist 2', description: 'Description 2', image: 'https://picsum.photos/200?random=10'},
+	{name: 'Artist 3', description: 'Description 3', image: 'https://picsum.photos/200?random=4'},
 ];
 
 
@@ -30,6 +30,7 @@ const artists = [
 const Artists = () => {
 	return (
 		<div>
+			<Navigation />
 			<h1>Artists</h1>
 			<div className="flex flex-col gap-4">
 				{artists.map((artist) => (

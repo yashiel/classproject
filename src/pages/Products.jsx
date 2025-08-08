@@ -13,10 +13,13 @@
  */
 
 
+import Navigation from '../components/Navigation';
+
 
 const Products = () => {
     return (
         <div>
+            <Navigation />
             <h1>Products</h1>
         </div>
     );

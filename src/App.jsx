@@ -13,14 +13,14 @@
  */
 
 
-import './App.css'
 import Home from './pages/Home'
-
+import Navigation from './components/Navigation'
 
 const App = () => {
 
     return (
         <>
+            <Navigation />
             <Home/>
         </>
     )

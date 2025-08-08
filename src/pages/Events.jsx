@@ -13,10 +13,13 @@
  */
 
 
+import Navigation from '../components/Navigation';
+
 
 const Events = () => {
     return (
         <div>
+            <Navigation />
             <h1>Events</h1>
         </div>
     );
