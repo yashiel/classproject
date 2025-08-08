@@ -12,18 +12,24 @@
  * HISTORY:
  */
 
+import { Route, Routes } from 'react-router';
 
-import Home from './pages/Home'
-import Navigation from './components/Navigation'
+import Artists from './pages/Artists';
+import Events from './pages/Events';
+import Home from './pages/Home';
+import Products from './pages/Products';
 
 const App = () => {
-
-    return (
-        <>
-            <Navigation />
-            <Home/>
-        </>
-    )
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/artists" element={<Artists />} />
+				<Route path="/events" element={<Events />} />
+				<Route path="/products" element={<Products />} />
+			</Routes>
+		</>
+	);
 };
 
 export default App;

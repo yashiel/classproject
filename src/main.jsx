@@ -14,25 +14,16 @@
 
 
 
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import './index.css'
-import {BrowserRouter, Route, Routes} from 'react-router'
-import App from './App.jsx'
-import Artists from './pages/Artists'
-import Events from './pages/Events'
-import Products from './pages/Products'
-
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router';
+import App from './App.jsx';
+import './index.css';
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<App/>}/>
-                <Route path='/artists' element={<Artists/>}/>
-                <Route path='/events' element={<Events/>}/>
-                <Route path='/products' element={<Products/>}/>
-            </Routes>
-        </BrowserRouter>
-    </StrictMode>,
-)
+	<StrictMode>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</StrictMode>
+);
