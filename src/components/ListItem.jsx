@@ -14,15 +14,19 @@
 
 
 import React from 'react';
+import { Link } from 'react-router';
 
 function ListItem({ item }) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center">
-        <img src={item.image} alt={item.name} className="w-10 h-10 rounded-full" />
+        <img src={item.imageUrl} alt={item.name} className="w-10 h-10 rounded-full" />
         <div className="ml-3">
           <h3 className="text-lg font-medium">{item.name}</h3>
-          <p className="text-sm text-gray-500">{item.description}</p>
+          <p className="text-sm text-gray-500">{item.bio}</p>
+          <p className="text-sm text-gray-500">{item.genre}</p>
+          <p className="text-sm text-gray-500">{item.country}</p>
+          <Link to={item.websiteUrl}>Website</Link>
         </div>
       </div>    
       <div className="flex items-center">

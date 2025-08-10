@@ -15,23 +15,42 @@
 
 
 import ListItem from '../components/ListItem';
-
-const artists = [
-	{name: 'Artist 1', description: 'Description 1', image: 'https://picsum.photos/200?random=6'},
-	{name: 'Artist 2', description: 'Description 2', image: 'https://picsum.photos/200?random=10'},
-	{name: 'Artist 3', description: 'Description 3', image: 'https://picsum.photos/200?random=4'},
-];
-
-
+import db from '../data/database';
+import { useState, useEffect } from 'react';
 
 
 const Artists = () => {
+
+const [artists, setArtists] = useState([]);
+const [loading, setLoading] = useState(true);
+
+
+const listArtists = async () => {
+	try {
+		const response = await db.artists.list();
+		setArtists(response.documents);
+		setLoading(false);
+		return response;
+	} catch (error) {
+		console.error('Error fetching artists:', error);
+		setLoading(false);
+		setArtists([]);
+	}
+};
+
+useEffect(() => {
+	listArtists();
+}, []);
+
+if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
+
+
 	return (
 		<>
 			<h1>Artists</h1>
 			<div className="flex flex-col gap-4 ">
 				{artists.map((artist) => (
-					<ListItem key={artist.name} item={artist}/>
+					<ListItem key={artist.$id} item={artist}/>
 				))}
 			</div>
 		</>
