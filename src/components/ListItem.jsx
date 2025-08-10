@@ -15,25 +15,41 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import db from '../data/database';
 
 function ListItem({ item }) {
+
+const handleDelete = async () => {
+  try {
+    await db.artists.delete(item.$id);
+  } catch (error) {
+    console.error('Error deleting artist:', error);
+  }
+};
+
+
+
+
+
+
+
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center">
-        <img src={item.imageUrl} alt={item.name} className="w-10 h-10 rounded-full" />
+    <div className="flex items-center justify-between p-8 border-b border-gray-200 bg-gray-50">
+      <div className="flex items-center gap-5">
+        <div className="w-30 h-30 rounded-full overflow-hidden">
+          <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+        </div>
         <div className="ml-3">
-          <h3 className="text-lg font-medium">{item.name}</h3>
-          <p className="text-sm text-gray-500">{item.bio}</p>
+          <h3 className="text-3xl font-semibold">{item.name}</h3>
+          <p className="text-base text-gray-500">{item.bio}</p>
           <p className="text-sm text-gray-500">{item.genre}</p>
           <p className="text-sm text-gray-500">{item.country}</p>
-          <Link to={item.websiteUrl}>Website</Link>
+          <Link to={item.websiteUrl} className='text-sm text-indigo-500 hover:text-amber-500 hover:underline transition-colors duration-300 ease-in-out'>Website</Link>
         </div>
       </div>    
-      <div className="flex items-center">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-          Edit
-        </button>
-        <button className="bg-red-500 text-white px-4 py-2 rounded-md">
+      <div className="flex items-center gap-2">
+        <Link to={`/artists/${item.$id}`} className='bg-indigo-500 text-white px-4 py-2 rounded-md text-sm'>Edit</Link>
+        <button className="bg-red-500 text-white px-4 py-2 rounded-md text-sm" onClick={handleDelete}>
           Delete
         </button>
       </div>

@@ -21,9 +21,9 @@ const Navigation = () => {
             <nav className="flex gap-4 p-4">
                 <ul className="flex gap-4">
                     <li><Link to="/" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">Home</Link></li>
-                    <li><Link to="/artists" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">Artist</Link></li>
-                    <li><Link to="/events" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">Events</Link></li>
-                    <li><Link to="/products" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">Products</Link></li>
+                    <li><Link to="/artists" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">Artist Directory</Link></li>
+                    <li><Link to="/events" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">All Events</Link></li>
+                    <li><Link to="/products" className="text-black font-bold text-2xl hover:text-gray-500 transition-colors duration-300 hover:underline hover:underline-offset-4">All Products</Link></li>
                 </ul>
             </nav>
         </>

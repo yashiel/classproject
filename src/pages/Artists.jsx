@@ -17,6 +17,7 @@
 import ListItem from '../components/ListItem';
 import db from '../data/database';
 import { useState, useEffect } from 'react';
+import { Query } from 'appwrite';
 
 
 const Artists = () => {
@@ -27,7 +28,7 @@ const [loading, setLoading] = useState(true);
 
 const listArtists = async () => {
 	try {
-		const response = await db.artists.list();
+		const response = await db.artists.list([Query.orderAsc('name')]);
 		setArtists(response.documents);
 		setLoading(false);
 		return response;
