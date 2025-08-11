@@ -12,15 +12,39 @@
  * HISTORY:
  */
 
-import React from 'react'
-import { Link } from 'react-router'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show footer when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <>
-
-
-      <footer className="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow-sm md:flex md:items-center md:justify-between md:p-6 dark:bg-indigo-800 dark:border-b-indigo-6000">
+      <footer className={`fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow-sm md:flex md:items-center md:justify-between md:p-6 dark:bg-indigo-800 dark:border-b-indigo-6000 transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : 'translate-y-full'
+      }`}>
           <span className="text-sm text-gray-500 sm:text-center dark:text-white">© 2025 <a href="https://artistauction.appwrite.network/" className="hover:underline">Artist Auction</a>. All Rights Reserved.
           </span>
           <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-white sm:mt-0">
@@ -38,7 +62,6 @@ function Footer() {
               </li>
           </ul>
       </footer>
-
     </>
   )
 }

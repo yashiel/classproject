@@ -12,14 +12,17 @@
  * HISTORY:
  */
 
-import { Route, Routes } from 'react-router';
-
+import { Route, Routes } from 'react-router-dom';
 import Artists from './pages/Artists';
 import Events from './pages/Events';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Artist from './pages/Artist';
+import EditArtist from './pages/EditArtist';
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
 	return (
@@ -28,7 +31,14 @@ const App = () => {
 			
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
 				<Route path="/artists" element={<Artists />} />
+				<Route path="/artists/:id" element={<Artist />} />
+				<Route path="/artists/:id/edit" element={
+					<ProtectedRoute>
+						<EditArtist />
+					</ProtectedRoute>
+				} />
 				<Route path="/events" element={<Events />} />
 				<Route path="/products" element={<Products />} />
 			</Routes>

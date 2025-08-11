@@ -48,11 +48,21 @@ if (loading) return <div className="flex justify-center items-center h-screen">L
 
 	return (
 		<>
-			<h1>Artists</h1>
-			<div className="flex flex-col gap-4 ">
-				{artists.map((artist) => (
-					<ListItem key={artist.$id} item={artist}/>
-				))}
+			<div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 pb-24">
+				<div className="container mx-auto px-6 py-8">
+					<div className="text-center mb-12">
+						<h1 className="text-5xl font-bold text-gray-800 mb-4">Artist Directory</h1>
+						<p className="text-xl text-gray-600 max-w-2xl mx-auto">
+							Discover amazing artists from around the world. Explore their unique styles and creative journeys.
+						</p>
+					</div>
+					
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+						{artists.map((artist) => (
+							<ListItem key={artist.$id} item={artist}/>
+						))}
+					</div>
+				</div>
 			</div>
 		</>
 	);
