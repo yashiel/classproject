@@ -21,6 +21,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Artist from './pages/Artist';
 import EditArtist from './pages/EditArtist';
+import AddArtist from './pages/AddArtist';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -37,6 +38,11 @@ const App = () => {
 				<Route path="/artists/:id/edit" element={
 					<ProtectedRoute>
 						<EditArtist />
+					</ProtectedRoute>
+				} />
+				<Route path="/add-artist" element={
+					<ProtectedRoute>
+						<AddArtist />
 					</ProtectedRoute>
 				} />
 				<Route path="/events" element={<Events />} />
