@@ -13,11 +13,12 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Footer() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,27 +41,75 @@ function Footer() {
     };
   }, [lastScrollY]);
 
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <>
-      <footer className={`fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow-sm md:flex md:items-center md:justify-between md:p-6 dark:bg-indigo-800 dark:border-b-indigo-6000 transition-transform duration-300 ${
+      <footer className={`fixed bottom-0 left-0 z-20 w-full backdrop-blur-md bg-white/70 border-t border-white/30 transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}>
-          <span className="text-sm text-gray-500 sm:text-center dark:text-white">© 2025 <a href="https://artistauction.appwrite.network/" className="hover:underline">Artist Auction</a>. All Rights Reserved.
-          </span>
-          <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-white sm:mt-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center py-4">
+            {/* Brand and Copyright */}
+            <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
+              <Link to="/" className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                ArtistAuction
+              </Link>
+              <span className="text-sm text-gray-600 text-center md:text-left">
+                © 2025 All Rights Reserved. Connecting artists with art lovers worldwide.
+              </span>
+            </div>
+            
+            {/* Navigation Links */}
+            <ul className="flex flex-wrap items-center gap-6 text-sm">
               <li>
-                  <Link to="/" className="hover:underline me-4 md:me-6">Home</Link>
+                <Link 
+                  to="/" 
+                  className={`font-medium transition-all duration-300 hover:text-indigo-600 ${
+                    isActive("/") ? "text-indigo-600" : "text-gray-600"
+                  }`}
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                  <Link to="/artists" className="hover:underline me-4 md:me-6">Artist Directory</Link>
+                <Link 
+                  to="/artists" 
+                  className={`font-medium transition-all duration-300 hover:text-indigo-600 ${
+                    isActive("/artists") ? "text-indigo-600" : "text-gray-600"
+                  }`}
+                >
+                  Artists
+                </Link>
               </li>
               <li>
-                  <Link to="/events" className="hover:underline me-4 md:me-6">All Events</Link>
+                <Link 
+                  to="/events" 
+                  className={`font-medium transition-all duration-300 hover:text-indigo-600 ${
+                    isActive("/events") ? "text-indigo-600" : "text-gray-600"
+                  }`}
+                >
+                  Events
+                </Link>
               </li>
               <li>
-                  <Link to="/products" className="hover:underline">All Products</Link>
+                <Link 
+                  to="/products" 
+                  className={`font-medium transition-all duration-300 hover:text-indigo-600 ${
+                    isActive("/products") ? "text-indigo-600" : "text-gray-600"
+                  }`}
+                >
+                  Products
+                </Link>
               </li>
-          </ul>
+            </ul>
+          </div>
+        </div>
       </footer>
     </>
   )
