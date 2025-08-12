@@ -372,7 +372,7 @@ function EventDetails() {
               </div>
 
               {/* Share Event Card */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-6 sticky top-6 mt-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Share Event</h3>
                 <div className="flex gap-3">
                   <button className="flex-1 bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700 transition-colors duration-300">

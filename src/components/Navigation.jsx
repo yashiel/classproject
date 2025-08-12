@@ -15,10 +15,25 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState, useEffect } from "react";
 
 const Navigation = () => {
     const { user, signOut } = useAuth();
     const location = useLocation();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            setIsScrolled(scrollTop > 10);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleSignOut = async () => {
         await signOut();
@@ -33,12 +48,20 @@ const Navigation = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-white/20 shadow-lg">
+            <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+                isScrolled 
+                    ? 'backdrop-blur-md bg-white/80 border-b border-white/20 shadow-lg' 
+                    : 'backdrop-blur-none bg-transparent border-b border-transparent shadow-none'
+            }`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-6">
                         {/* Logo/Brand */}
                         <div className="flex items-center">
-                            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent font-display">
+                            <Link to="/" className={`text-2xl font-bold font-display transition-all duration-300 ${
+                                isScrolled 
+                                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent' 
+                                    : 'text-gray-800 drop-shadow-lg'
+                            }`}>
                                 ArtistAuction
                             </Link>
                         </div>
@@ -50,8 +73,8 @@ const Navigation = () => {
                                     to="/" 
                                     className={`font-medium text-lg transition-all duration-300 relative group font-sans ${
                                         isActive("/") 
-                                            ? "text-indigo-600" 
-                                            : "text-gray-700 hover:text-indigo-600"
+                                            ? (isScrolled ? "text-indigo-600" : "text-gray-800") 
+                                            : (isScrolled ? "text-gray-700 hover:text-indigo-600" : "text-gray-700 hover:text-gray-900")
                                     }`}
                                 >
                                     <span className="relative z-10">Home</span>
@@ -66,8 +89,8 @@ const Navigation = () => {
                                     to="/artists" 
                                     className={`font-medium text-lg transition-all duration-300 relative group font-sans ${
                                         isActive("/artists") 
-                                            ? "text-indigo-600" 
-                                            : "text-gray-700 hover:text-indigo-600"
+                                            ? (isScrolled ? "text-indigo-600" : "text-gray-800") 
+                                            : (isScrolled ? "text-gray-700 hover:text-indigo-600" : "text-gray-700 hover:text-gray-900")
                                     }`}
                                 >
                                     <span className="relative z-10">Artist Directory</span>
@@ -82,8 +105,8 @@ const Navigation = () => {
                                     to="/events" 
                                     className={`font-medium text-lg transition-all duration-300 relative group font-sans ${
                                         isActive("/events") 
-                                            ? "text-indigo-600" 
-                                            : "text-gray-700 hover:text-indigo-600"
+                                            ? (isScrolled ? "text-indigo-600" : "text-gray-800") 
+                                            : (isScrolled ? "text-gray-700 hover:text-indigo-600" : "text-gray-700 hover:text-gray-900")
                                     }`}
                                 >
                                     <span className="relative z-10">All Events</span>
@@ -98,8 +121,8 @@ const Navigation = () => {
                                     to="/products" 
                                     className={`font-medium text-lg transition-all duration-300 relative group font-sans ${
                                         isActive("/products") 
-                                            ? "text-indigo-600" 
-                                            : "text-gray-700 hover:text-indigo-600"
+                                            ? (isScrolled ? "text-indigo-600" : "text-gray-800") 
+                                            : (isScrolled ? "text-gray-700 hover:text-indigo-600" : "text-gray-700 hover:text-gray-900")
                                     }`}
                                 >
                                     <span className="relative z-10">All Products</span>
@@ -115,9 +138,15 @@ const Navigation = () => {
                         <div className="flex items-center gap-4">
                             {user ? (
                                 <div className="flex items-center gap-4">
-                                    <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-white/20">
+                                    <div className={`hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
+                                        isScrolled 
+                                            ? 'bg-white/60 backdrop-blur-sm border-white/20' 
+                                            : 'bg-white/80 backdrop-blur-sm border-gray-300'
+                                    }`}>
                                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                        <span className="text-sm font-medium text-gray-700 font-sans">
+                                        <span className={`text-sm font-medium font-sans transition-all duration-300 ${
+                                            isScrolled ? 'text-gray-700' : 'text-gray-800'
+                                        }`}>
                                             {user.name || user.email}
                                         </span>
                                     </div>
