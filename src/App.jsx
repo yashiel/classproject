@@ -4,7 +4,7 @@
  * Created Date: Friday August 8th 2025
  * Author: Yashi EL
  * -----
- * Last Modified: Saturday August 9th 2025 12:40:57 am
+ * Last Modified: Tuesday August 12th 2025 4:03:11 pm
  * Modified By: the developer formerly known as Yashi EL at <hi@yashiel.com>
  * -----
  * Copyright (c) 2025 Yashi Digital Agency
@@ -15,6 +15,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Artists from './pages/Artists';
 import Events from './pages/Events';
+import EventDetails from './pages/EventDetails';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Navigation from './components/Navigation';
@@ -46,6 +47,7 @@ const App = () => {
 					</ProtectedRoute>
 				} />
 				<Route path="/events" element={<Events />} />
+				<Route path="/events/:id" element={<EventDetails />} />
 				<Route path="/products" element={<Products />} />
 			</Routes>
 

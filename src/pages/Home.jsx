@@ -148,8 +148,6 @@ const Home = () => {
 						<div className="absolute inset-0">
 							<img className="object-cover w-full h-full opacity-50" src="https://landingfoliocom.imgix.net/store/collection/dusk/images/noise.png" alt="" />
 						</div>
-
-						{/* <img className="relative w-full max-w-5xl mx-auto" src="https://landingfoliocom.imgix.net/store/collection/dusk/images/hero/4/dashboard-mockup.png" alt="" /> */}
 					</div>
 				</div>
 			</section>

@@ -220,9 +220,12 @@ function EventListItem({ item }) {
           
           {/* Action Buttons */}
           <div className="flex gap-2">
-            <button className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-xl text-xs font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <Link 
+              to={`/events/${item.$id}`}
+              className="flex-1 bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 rounded-xl text-xs font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+            >
               View Details
-            </button>
+            </Link>
             {artists.length > 0 && (
               <button className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-2 px-4 rounded-xl text-xs font-semibold hover:from-amber-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 Book Tickets
